@@ -153,7 +153,7 @@ The Canvas API is used to animate the main image with distortion effects
           >
             <img
               src="/images/Screenshot_19.png"
-              alt="Japanese Art project"
+              alt="YumeTrack project"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40" />

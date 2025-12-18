@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import FlyingPosters from "../components/ui/FlyingPosters";
-
+import InfiniteGallery from "../components/3d-gallery-photography";
 export default function ProjetJapaneseArt() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
@@ -138,20 +137,23 @@ The Canvas API is used to animate the main image with distortion effects
         </section>
 
         <section className="bg-black px-6 md:px-16 lg:px-24 py-24">
-          <div className="max-w-5xl mx-auto flex flex-col items-center gap-10">
-            <h2 className="text-sm md:text-base uppercase tracking-[0.25em] text-white/60 text-center">
-              「 Flying posters — generative snapshots 」
-            </h2>
-            <FlyingPosters
-              className="w-full h-[520px] md:h-[620px] lg:h-[720px]"
-              planeHeight={420}
-              items={[
-                "/images/Screenshot_8.png",
-                "/images/Screenshot_33.png",
-              ]}
-            />
-          </div>
-        </section>
+  <div className="max-w-5xl mx-auto flex flex-col items-center gap-10">
+    <h2 className="text-sm md:text-base uppercase tracking-[0.25em] text-white/60 text-center">
+      「 Flying posters — generative snapshots 」
+    </h2>
+    <InfiniteGallery
+      className="w-full h-[520px] md:h-[620px] lg:h-[720px]"
+      images={[
+        "/images/Screenshot_8.png",
+        "/images/Screenshot_33.png",
+        "/images/Screenshot_45.png",
+        "/images/Screenshot_46.png",
+      ]}
+      visibleCount={8}
+      speed={1}
+    />
+  </div>
+</section>
 
         <section className="bg-black">
           <Link

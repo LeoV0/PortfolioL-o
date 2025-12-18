@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import FlyingPosters from "../components/ui/FlyingPosters";
 import { useEffect } from "react";
+import InfiniteGallery from "../components/3d-gallery-photography";
 
 export default function ProjetGenerativeArt() {
     useEffect(() => {
@@ -47,6 +47,7 @@ export default function ProjetGenerativeArt() {
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-light max-w-xl">
               Generative visuals driven by code and randomness.
             </h1>
+            <p>Ajouter mon Nom et mon Github</p>
           </motion.div>
         </section>
 
@@ -139,21 +140,25 @@ I used the Canvas API to create an animated background (moving blue squares,
         
 
         <section className="bg-black px-6 md:px-16 lg:px-24 py-24">
-          <div className="max-w-5xl mx-auto flex flex-col items-center gap-10">
-            <h2 className="text-sm md:text-base uppercase tracking-[0.25em] text-white/60 text-center">
-              「 Flying posters — generative snapshots 」
-            </h2>
-            <FlyingPosters
-              className="w-full h-[520px] md:h-[620px] lg:h-[720px]"
-              planeHeight={420}
-              items={[
-                "/images/Screenshot_11.png",
-                "/images/Screenshot_31.png",
-                "/images/Screenshot_32.png",
-              ]}
-            />
-          </div>
-        </section>
+  <div className="max-w-5xl mx-auto flex flex-col items-center gap-10">
+    <h2 className="text-sm md:text-base uppercase tracking-[0.25em] text-white/60 text-center">
+      「 Flying posters — generative snapshots 」
+    </h2>
+    <InfiniteGallery
+      className="w-full h-[520px] md:h-[620px] lg:h-[720px]"
+      images={[
+        "/images/Screenshot_11.png",
+        "/images/Screenshot_31.png",
+        "/images/Screenshot_32.png",
+        "/images/Screenshot_40.png",
+        "/images/Screenshot_41.png",
+        "/images/Screenshot_42.png",
+      ]}
+      visibleCount={8}
+      speed={1}
+    />
+  </div>
+</section>
 
         <section className="bg-black">
           <Link

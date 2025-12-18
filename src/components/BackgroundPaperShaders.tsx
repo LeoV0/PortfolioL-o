@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { MeshGradient, DotOrbit } from "@paper-design/shaders-react";
-import { TextScramble } from "../components/ui/text-scramble";
 import Floating, { FloatingElement } from "../components/ui/parallax-floating";
 import Magnet from "../components/ui/Magnet";
 import { useNavigate } from "react-router-dom";
@@ -237,7 +236,7 @@ export default function BackgroundPaperShaders() {
         </div>
       )}
 
-      {!isTransitioning && (
+      {/* {!isTransitioning && (
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-6 left-6 pointer-events-auto">
             <TextScramble text="「 Léo—Gousset 」" />
@@ -262,7 +261,7 @@ export default function BackgroundPaperShaders() {
             />
           </div>
         </div>
-      )}
+      )} */}
 
       {isTransitioning && targetPath && (
         <ScreenshotTransition

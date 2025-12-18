@@ -1,9 +1,10 @@
 import { motion } from "motion/react";
-import { Link } from "react-router-dom";
+import { Link  } from "react-router-dom";
 import { useEffect } from "react";
 import InfiniteGallery from "../components/3d-gallery-photography";
 
 export default function ProjetGenerativeArt() {
+
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
       }, []);

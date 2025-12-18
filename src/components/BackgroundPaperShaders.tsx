@@ -4,7 +4,8 @@ import { MeshGradient, DotOrbit } from "@paper-design/shaders-react";
 import Floating, { FloatingElement } from "../components/ui/parallax-floating";
 import Magnet from "../components/ui/Magnet";
 import { useNavigate } from "react-router-dom";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
+import ProjectsReveal from "./ProjectsReveal";
 
 type ActiveEffect = "mesh" | "dots" | "combined";
 
@@ -13,6 +14,8 @@ type ScreenshotTransitionProps = {
   duration?: number;
   onComplete: () => void;
 };
+
+
 
 function ScreenshotTransition({
   imageSrc,
@@ -53,6 +56,8 @@ export default function BackgroundPaperShaders() {
   const [activeEffect] = useState<ActiveEffect>("mesh");
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [targetPath, setTargetPath] = useState<string | null>(null);
+  const [showProjects, setShowProjects] = useState(false);
+
 
   const navigate = useNavigate();
 
@@ -228,40 +233,17 @@ export default function BackgroundPaperShaders() {
               WORKS
             </h1>
             <Magnet padding={40} magnetStrength={5}>
-              <button type="button" className="mt-6 px-8 py-2 bg-white text-black rounded-full text-sm uppercase tracking-[0.2em] cursor-pointer" onClick={() => handleCardClick("/projet/yumetrack")}>
-                View projects
-              </button>
+            <button
+  type="button"
+  className="mt-6 px-8 py-2 bg-white text-black rounded-full text-sm uppercase tracking-[0.2em] cursor-pointer"
+  onClick={() => setShowProjects(true)}
+>
+  View projects
+</button>
             </Magnet>
           </div>
         </div>
       )}
-
-      {/* {!isTransitioning && (
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-6 left-6 pointer-events-auto">
-            <TextScramble text="「 Léo—Gousset 」" />
-          </div>
-
-          <div className="absolute top-6 right-6 pointer-events-auto text-right">
-            <TextScramble text="「 Nantes—France 」" />
-          </div>
-
-          <div className="absolute inset-0 pointer-events-none">
-            <div
-              className="absolute top-1/4 left-1/3 w-32 h-32 bg-gray-800/5 rounded-full blur-3xl animate-pulse"
-              style={{ animationDuration: `${3 / speed}s` }}
-            />
-            <div
-              className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-white/20 rounded-full blur-2xl animate-pulse"
-              style={{ animationDuration: `${2 / speed}s`, animationDelay: "1s" }}
-            />
-            <div
-              className="absolute top-1/2 right-1/3 w-20 h-20 bg-gray-900/30 rounded-full blur-xl animate-pulse"
-              style={{ animationDuration: `${4 / speed}s`, animationDelay: "0.5s" }}
-            />
-          </div>
-        </div>
-      )} */}
 
       {isTransitioning && targetPath && (
         <ScreenshotTransition
@@ -273,6 +255,15 @@ export default function BackgroundPaperShaders() {
           }}
         />
       )}
+
+<AnimatePresence>
+  {showProjects && (
+    <ProjectsReveal
+      onClose={() => setShowProjects(false)}
+    />
+  )}
+</AnimatePresence>
+
     </div>
   );
 }

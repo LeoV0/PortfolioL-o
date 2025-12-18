@@ -10,8 +10,15 @@ export default function ProjetYumeTrack() {
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
       <main className="flex-1 flex flex-col">
+      <motion.div
+    className="fixed inset-0 bg-black z-[9999] pointer-events-none"
+    initial={{ opacity: 1 }}
+    animate={{ opacity: 0 }}
+    transition={{ duration: 0.35, ease: "easeOut" }}
+  />
         <section className="relative h-screen overflow-hidden">
           <motion.img
+          key="yumetrack"
             src="/images/Screenshot_19.png"
             className="w-full h-full object-cover"
             initial={{ y: "100%", opacity: 1 }}

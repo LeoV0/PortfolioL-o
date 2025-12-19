@@ -1,6 +1,6 @@
 import type React from 'react';
 import { useRef, useMemo, useCallback, useState, useEffect } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber'; // ← useThree supprimé
+import { Canvas, useFrame } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 
@@ -297,7 +297,6 @@ function GalleryScene({
 
     const imageAdvance = totalImages > 0 ? visibleCount % totalImages || totalImages : 0;
     const totalRange = depthRange;
-    const halfRange = totalRange / 2;
 
     planesData.current.forEach((plane, i) => {
       let newZ = plane.z + scrollVelocity * delta * 10;
@@ -376,9 +375,9 @@ function GalleryScene({
 
         if (!texture || !material) return null;
 
-        // Calcul d'aspect ratio corrigé et sécurisé
-        const aspect = texture.image
-          ? (texture.image as HTMLImageElement).width / (texture.image as HTMLImageElement).height
+        const textureImage = texture.image as HTMLImageElement | undefined;
+        const aspect = textureImage?.width && textureImage?.height
+          ? textureImage.width / textureImage.height
           : 1;
 
         const scale: [number, number, number] = aspect > 1 ? [2 * aspect, 2, 1] : [2, 2 / aspect, 1];
@@ -387,7 +386,7 @@ function GalleryScene({
           <ImagePlane
             key={plane.index}
             texture={texture}
-            position={[plane.x, plane.y, plane.z - depthRange / 2]} // worldZ supprimé
+            position={[plane.x, plane.y, plane.z - depthRange / 2]}
             scale={scale}
             material={material}
           />

@@ -15,7 +15,7 @@ interface TextScrambleProps {
 
 export function TextScramble({ text, className = "" }: TextScrambleProps) {
   const [displayText, setDisplayText] = useState(text);
-  const [isHovering, setIsHovering] = useState(false);
+  const [, setIsHovering] = useState(false);
   const [isScrambling, setIsScrambling] = useState(false);
   const intervalRef = useRef<number | null>(null);
   const frameRef = useRef(0);

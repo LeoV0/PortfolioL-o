@@ -124,109 +124,157 @@ export default function BackgroundPaperShaders() {
         </>
       )}
 
-      {!isTransitioning && (
-        <Floating
-          sensitivity={1.5}
-          easingFactor={0.08}
-          className="absolute inset-0 pointer-events-none z-0"
-        >
-          <FloatingElement
-            depth={0.5}
-            className="top-[8%] left-[8%] pointer-events-auto"
-          >
-            <button
-              type="button"
-              onClick={() => handleCardClick("/projet/japanese-art")}
-              className="block focus:outline-none"
-            >
-              <img
-                src="/images/Screenshot_8.png"
-                className="w-32 h-80 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
-              />
-            </button>
-          </FloatingElement>
+{!isTransitioning && (
+  <Floating
+    sensitivity={1.5}
+    easingFactor={0.08}
+    className="absolute inset-0 z-0"
+  >
+    <FloatingElement
+      depth={0.5}
+      className="top-[2%] left-[5%] pointer-events-auto block md:hidden"
+    >
+      <button
+        type="button"
+        onClick={() => handleCardClick("/projet/japanese-art")}
+        className="block focus:outline-none"
+      >
+        <img
+          src="/images/Screenshot_8.png"
+          className="w-32 h-80 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+        />
+      </button>
+    </FloatingElement>
 
-          <FloatingElement
-            depth={1.0}
-            className="top-[12%] left-[32%] pointer-events-auto"
-          >
-            <button
-              type="button"
-              onClick={() => handleCardClick("/projet/yumetrack")}
-              className="block focus:outline-none"
-            >
-              <img
-                src="/images/Screenshot_3.png"
-                className="w-38 h-60 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
-              />
-            </button>
-          </FloatingElement>
+    <FloatingElement
+      depth={1.0}
+      className="top-[12%] left-[35%] pointer-events-auto block md:hidden"
+    >
+      <button
+        type="button"
+        onClick={() => handleCardClick("/projet/yumetrack")}
+        className="block focus:outline-none"
+      >
+        <img
+          src="/images/Screenshot_3.png"
+          className="w-38 h-60 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+        />
+      </button>
+    </FloatingElement>
 
-          <FloatingElement
-            depth={1.0}
-            className="top-[6%] left-[62%] pointer-events-auto"
-          >
-            <button
-              type="button"
-              onClick={() => handleCardClick("/projet/generative-art")}
-              className="block focus:outline-none"
-            >
-              <img
-                src="/images/Screenshot_9.png"
-                className="w-36 h-79 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
-              />
-            </button>
-          </FloatingElement>
+    <FloatingElement
+      depth={1.0}
+      className="top-[58%] left-[22%] pointer-events-auto block md:hidden"
+    >
+      <button
+        type="button"
+        onClick={() => handleCardClick("/projet/generative-art")}
+        className="block focus:outline-none"
+      >
+        <img
+          src="/images/Screenshot_9.png"
+          className="w-36 h-79 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+        />
+      </button>
+    </FloatingElement>
 
-          <FloatingElement
-            depth={1.2}
-            className="top-[60%] left-[10%] pointer-events-auto"
-          >
-            <button
-              type="button"
-              onClick={() => handleCardClick("/projet/generative-art")}
-              className="block focus:outline-none"
-            >
-              <img
-                src="/images/Screenshot_10.png"
-                className="w-30 h-30 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
-              />
-            </button>
-          </FloatingElement>
+    <FloatingElement
+      depth={0.5}
+      className="top-[8%] left-[8%] pointer-events-auto hidden md:block"
+    >
+      <button
+        type="button"
+        onClick={() => handleCardClick("/projet/japanese-art")}
+        className="block focus:outline-none"
+      >
+        <img
+          src="/images/Screenshot_8.png"
+          className="w-32 h-80 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+        />
+      </button>
+    </FloatingElement>
 
-          <FloatingElement
-            depth={0.8}
-            className="top-[66%] left-[46%] pointer-events-auto"
-          >
-            <button
-              type="button"
-              onClick={() => handleCardClick("/projet/generative-art")}
-              className="block focus:outline-none"
-            >
-              <img
-                src="/images/Screenshot_11.png"
-                className="w-36 h-80 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
-              />
-            </button>
-          </FloatingElement>
+    <FloatingElement
+      depth={1.0}
+      className="top-[12%] left-[32%] pointer-events-auto hidden md:block"
+    >
+      <button
+        type="button"
+        onClick={() => handleCardClick("/projet/yumetrack")}
+        className="block focus:outline-none"
+      >
+        <img
+          src="/images/Screenshot_3.png"
+          className="w-38 h-60 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+        />
+      </button>
+    </FloatingElement>
 
-          <FloatingElement
-            depth={1.0}
-            className="top-[76%] left-[70%] pointer-events-auto"
-          >
-            <button
-              type="button"
-              onClick={() => handleCardClick("/projet/yumetrack")}
-              className="block focus:outline-none"
-            >
-              <img
-                src="/images/Screenshot_4.png"
-                className="w-38 h-60 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
-              />
-            </button>
-          </FloatingElement>
-        </Floating>
-      )}
+    <FloatingElement
+      depth={1.0}
+      className="top-[6%] left-[62%] pointer-events-auto hidden md:block"
+    >
+      <button
+        type="button"
+        onClick={() => handleCardClick("/projet/generative-art")}
+        className="block focus:outline-none"
+      >
+        <img
+          src="/images/Screenshot_9.png"
+          className="w-36 h-79 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+        />
+      </button>
+    </FloatingElement>
+
+    <FloatingElement
+      depth={1.2}
+      className="top-[60%] left-[10%] pointer-events-auto hidden md:block"
+    >
+      <button
+        type="button"
+        onClick={() => handleCardClick("/projet/generative-art")}
+        className="block focus:outline-none"
+      >
+        <img
+          src="/images/Screenshot_10.png"
+          className="w-30 h-30 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+        />
+      </button>
+    </FloatingElement>
+
+    <FloatingElement
+      depth={0.8}
+      className="top-[66%] left-[46%] pointer-events-auto hidden md:block"
+    >
+      <button
+        type="button"
+        onClick={() => handleCardClick("/projet/generative-art")}
+        className="block focus:outline-none"
+      >
+        <img
+          src="/images/Screenshot_11.png"
+          className="w-36 h-80 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+        />
+      </button>
+    </FloatingElement>
+
+    <FloatingElement
+      depth={1.0}
+      className="top-[76%] left-[70%] pointer-events-auto hidden md:block"
+    >
+      <button
+        type="button"
+        onClick={() => handleCardClick("/projet/yumetrack")}
+        className="block focus:outline-none"
+      >
+        <img
+          src="/images/Screenshot_4.png"
+          className="w-38 h-60 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+        />
+      </button>
+    </FloatingElement>
+  </Floating>
+)}
 
       {!isTransitioning && (
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-10">

@@ -69,26 +69,25 @@ export function TextScramble({ text, className = "" }: TextScrambleProps) {
 
   return (
     <div
-      className={`group relative inline-flex flex-col cursor-pointer select-none ${className}`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-     <span className="relative inline-block">
-  <span className="absolute inset-0 -z-10 bg-black/40 blur-sm rounded-sm" />
-  <span className="relative font-sans text-sm tracking-wider  text-white">
-    {displayText.split("").map((char, i) => (
-      <span
-        key={i}
-        className={`inline-block transition-opacity duration-150 ${
-          isScrambling && char !== text[i] ? "opacity-80" : "opacity-100"
-        }`}
-        style={{ transitionDelay: `${i * 10}ms` }}
-      >
-        {char}
+    className={`group relative inline-flex flex-col cursor-pointer select-none ${className}`}
+    onMouseEnter={handleMouseEnter}
+    onMouseLeave={handleMouseLeave}
+  >
+    <span className="relative inline-block">
+      <span className="relative font-sans text-sm tracking-wider text-white">
+        {displayText.split("").map((char, i) => (
+          <span
+            key={i}
+            className={`inline-block transition-opacity duration-150 ${
+              isScrambling && char !== text[i] ? "opacity-80" : "opacity-100"
+            }`}
+            style={{ transitionDelay: `${i * 10}ms` }}
+          >
+            {char}
+          </span>
+        ))}
       </span>
-    ))}
-  </span>
-</span>
-    </div>
+    </span>
+  </div>
   );
 }

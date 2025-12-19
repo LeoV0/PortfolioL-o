@@ -6,6 +6,7 @@ import Magnet from "../components/ui/Magnet";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
 import ProjectsReveal from "./ProjectsReveal";
+import AboutReveal from "./AboutReveal";
 
 type ActiveEffect = "mesh" | "dots" | "combined";
 
@@ -37,7 +38,7 @@ function ScreenshotTransition({
         transition={{ duration: duration * 0.7, ease: [0.22, 1, 0.36, 1] }}
       />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/40" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-black/40" />
 
       <motion.div
         className="absolute inset-x-0 bottom-0 pb-16 px-8 md:px-16 lg:px-24 flex flex-col gap-3"
@@ -57,6 +58,7 @@ export default function BackgroundPaperShaders() {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [targetPath, setTargetPath] = useState<string | null>(null);
   const [showProjects, setShowProjects] = useState(false);
+  const [showAbout, setShowAbout] = useState(false);
 
 
   const navigate = useNavigate();
@@ -233,14 +235,25 @@ export default function BackgroundPaperShaders() {
               WORKS
             </h1>
             <Magnet padding={40} magnetStrength={5}>
-            <button
-  type="button"
-  className="mt-6 px-8 py-2 bg-white text-black rounded-full text-sm uppercase tracking-[0.2em] cursor-pointer"
-  onClick={() => setShowProjects(true)}
->
-  View projects
-</button>
-            </Magnet>
+  <div className="mt-6 flex items-center justify-center gap-4">
+    <button
+      type="button"
+      className="px-8 py-2 bg-white text-black rounded-full text-sm uppercase tracking-[0.2em] cursor-pointer"
+      onClick={() => setShowProjects(true)}
+    >
+      View projects
+    </button>
+
+    <button
+      type="button"
+      className="px-8 py-2 border border-white/60 text-white rounded-full text-sm uppercase tracking-[0.2em] cursor-pointer hover:bg-white hover:text-black transition-colors"
+      onClick={() => setShowAbout(true)}
+    >
+      About
+    </button>
+  </div>
+</Magnet>
+
           </div>
         </div>
       )}
@@ -258,9 +271,13 @@ export default function BackgroundPaperShaders() {
 
 <AnimatePresence>
   {showProjects && (
-    <ProjectsReveal
-      onClose={() => setShowProjects(false)}
-    />
+    <ProjectsReveal onClose={() => setShowProjects(false)} />
+  )}
+</AnimatePresence>
+
+<AnimatePresence>
+  {showAbout && (
+    <AboutReveal onClose={() => setShowAbout(false)} />
   )}
 </AnimatePresence>
 

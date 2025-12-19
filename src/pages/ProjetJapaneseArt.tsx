@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import InfiniteGallery from "../components/3d-gallery-photography";
+import { TextScramble } from "../components/ui/text-scramble";
 export default function ProjetJapaneseArt() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
@@ -11,7 +12,7 @@ export default function ProjetJapaneseArt() {
     <div className="min-h-screen bg-black text-white flex flex-col">
       <main className="flex-1 flex flex-col">
       <motion.div
-    className="fixed inset-0 bg-black z-[9999] pointer-events-none"
+    className="fixed inset-0 bg-black z-9999 pointer-events-none"
     initial={{ opacity: 1 }}
     animate={{ opacity: 0 }}
     transition={{ duration: 0.35, ease: "easeOut" }}
@@ -26,14 +27,21 @@ export default function ProjetJapaneseArt() {
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/40" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-black/40" />
 
-          <header className="absolute top-6 left-6 right-6 flex items-center justify-between text-xs uppercase tracking-[0.25em] text-white/70 z-10">
-            <Link to="/" className="hover:text-white transition-colors">
-              ← Back
-            </Link>
-            <span>「 Japanese—Art 」</span>
-          </header>
+          <header className="absolute top-6 left-6 right-6 flex items-center justify-between text-xs  tracking-[0.25em] text-white/70 z-10">
+  <Link to="/" className="hover:text-white transition-colors">
+  <TextScramble 
+    text="← Back" 
+  />
+    
+  </Link>
+
+  <TextScramble 
+    text="「 Japanese—Art 」" 
+    className="text-white/70 hover:text-white transition-colors"
+  />
+</header>
 
           <motion.div
             className="absolute inset-x-0 bottom-0 pb-16 px-8 md:px-16 lg:px-24 flex flex-col gap-3 z-10"
@@ -48,33 +56,8 @@ export default function ProjetJapaneseArt() {
               Japanese visual narratives for the web.
             </h1>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-4 border-t border-white/20">
-    <p className=" text-white/80 text-xl md:text-2xl lg:text-3xl font-light max-w-xl mt-1">Made by Léo Gousset</p>
-    <a 
-  href="https://github.com/LeoV0"
-  target="_blank" 
-  rel="noopener noreferrer"
-  className="group inline-flex items-center justify-center gap-2
-             text-[0.7rem] md:text-xs uppercase tracking-[0.25em]
-             text-white/80 hover:text-white transition-all duration-300
-             border border-white/40 px-5 py-2.5 rounded-full
-             hover:bg-white/10 hover:border-white/60"
->
-  <span className="leading-none">Github</span>
-  <svg
-    className="w-3.5 h-3.5 leading-none translate-y-[0.5px] group-hover:translate-x-1 transition-transform"
-    viewBox="0 0 20 20"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M5 10H15M10 5L15 10L10 15"
-      stroke="currentColor"
-      strokeWidth="1.4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-</a>
+    <p className=" text-white/80 text-xl md:text-2xl lg:text-3xl font-light max-w-xl mt-1">Made by Léo</p>
+   
 
   </div>
           </motion.div>
@@ -100,33 +83,33 @@ The Canvas API is used to animate the main image with distortion effects
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8 text-xs md:text-sm text-white/60">
             <div className="space-y-1">
-              <p className="uppercase tracking-[0.2em] text-[0.7rem] text-white/40">
-                Role
-              </p>
+            <p className="uppercase tracking-[0.2em] text-[0.7rem] text-white/40">
+  <TextScramble text="Role" />
+</p>
               <p>Développer, UI design, animation</p>
             </div>
             <div className="space-y-1">
-              <p className="uppercase tracking-[0.2em] text-[0.7rem] text-white/40">
-                Duration
-              </p>
+            <p className="uppercase tracking-[0.2em] text-[0.7rem] text-white/40">
+  <TextScramble text="Duration" />
+</p>
               <p>1 month</p>
             </div>
             <div className="space-y-1">
-              <p className="uppercase tracking-[0.2em] text-[0.7rem] text-white/40">
-                Year
-              </p>
+            <p className="uppercase tracking-[0.2em] text-[0.7rem] text-white/40">
+  <TextScramble text="Year" />
+</p>
               <p>2025</p>
             </div>
             <div className="space-y-1">
-              <p className="uppercase tracking-[0.2em] text-[0.7rem] text-white/40">
-                Stack
-              </p>
+            <p className="uppercase tracking-[0.2em] text-[0.7rem] text-white/40">
+  <TextScramble text="Stack" />
+</p>
               <p>React JSX, Canvas API</p>
             </div>
             <div className="space-y-2">
-              <p className="uppercase tracking-[0.2em] text-[0.7rem] text-white/40">
-                Link
-              </p>
+            <p className="uppercase tracking-[0.2em] text-[0.7rem] text-white/40">
+  <TextScramble text="Links" />
+</p>
               <div className="flex flex-row items-center gap-4 text-[0.7rem] tracking-[0.2em] uppercase">
                 <a
                   href="https://japanese-art.vercel.app/"
@@ -195,7 +178,7 @@ The Canvas API is used to animate the main image with distortion effects
               alt="YumeTrack project"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-black/40" />
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
               <p className="text-xs md:text-sm uppercase tracking-[0.25em] text-white/70">
                 「 Next — YumeTrack 」

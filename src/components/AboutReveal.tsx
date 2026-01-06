@@ -1,5 +1,7 @@
 import { motion } from "motion/react";
 import { TextScramble } from "./ui/text-scramble";
+import { LocationTag } from "../components/location-tag";
+
 
 type AboutRevealProps = {
   onClose: () => void;
@@ -29,6 +31,8 @@ export default function AboutReveal({ onClose }: AboutRevealProps) {
       </header>
 
       <div className="max-w-3xl px-6 text-white/80 space-y-6">
+      <LocationTag city="Nantes" country="FRANCE" timezone="Europe/Paris" />
+
         <h1 className="text-3xl md:text-4xl font-light">
           Léo Gousset — Front-end & Creative developer
         </h1>

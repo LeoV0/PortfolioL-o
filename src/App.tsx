@@ -1,7 +1,7 @@
-import BackgroundPaperShaders from "./components/BackgroundPaperShaders";
+import HomePage from "./pages/HomePage";
 
 function App() {
-  return <BackgroundPaperShaders />;
+  return <HomePage />;
 }
 
 export default App;

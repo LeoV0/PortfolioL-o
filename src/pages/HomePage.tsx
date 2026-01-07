@@ -53,6 +53,9 @@ export default function HomePage() {
   const [targetPath, setTargetPath] = useState<string | null>(null);
   const [showProjects, setShowProjects] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
+  const isMobile =
+  typeof window !== "undefined" &&
+  window.matchMedia("(max-width: 768px)").matches;
 
   const navigate = useNavigate();
 
@@ -69,12 +72,18 @@ export default function HomePage() {
   return (
     <div className="w-full h-screen bg-black relative overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <Component
-          color="rgba(128, 128, 128, 1)"
-          animation={{ scale: 100, speed: 90 }}
-          noise={{ opacity: 1, scale: 1.2 }}
-          sizing="fill"
-        />
+      <Component
+  color="rgba(128,128,128,1)"
+  animation={{
+    scale: isMobile ? 40 : 100,
+    speed: isMobile ? 40 : 90,
+  }}
+  noise={{
+    opacity: isMobile ? 0.3 : 1,
+    scale: 1.2,
+  }}
+  sizing="fill"
+/>
       </div>
 
       {!isTransitioning && (
@@ -85,7 +94,7 @@ export default function HomePage() {
         >
           <FloatingElement
             depth={0.5}
-            className="top-[2%] left-[5%] pointer-events-auto block md:hidden"
+            className="top-[65%] left-[25%] pointer-events-auto block md:hidden"
           >
             <button
               type="button"
@@ -101,7 +110,7 @@ export default function HomePage() {
 
           <FloatingElement
             depth={1.0}
-            className="top-[12%] left-[35%] pointer-events-auto block md:hidden"
+            className="top-[12%] left-[55%] pointer-events-auto block md:hidden"
           >
             <button
               type="button"
@@ -117,7 +126,7 @@ export default function HomePage() {
 
           <FloatingElement
             depth={1.0}
-            className="top-[58%] left-[22%] pointer-events-auto block md:hidden"
+            className="top-[2%] left-[5%] pointer-events-auto block md:hidden"
           >
             <button
               type="button"

@@ -73,6 +73,9 @@ export function Component({
 
     const displacementScale = animation ? mapRange(animation.scale, 1, 100, 20, 100) : 0;
     const animationDuration = animation ? mapRange(animation.speed, 1, 100, 1000, 50) : 1;
+    const isMobile =
+  typeof window !== "undefined" &&
+  window.matchMedia("(max-width: 768px)").matches;
 
     useEffect(() => {
         if (feColorMatrixRef.current && animationEnabled) {
@@ -110,7 +113,7 @@ export function Component({
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                backgroundColor: "black", // ✅ Ajout du fond noir
+                backgroundColor: "black",
                 ...style
             }}
         >
@@ -174,12 +177,21 @@ export function Component({
             </div>
 
             <div className="absolute inset-0 flex items-center justify-center z-10">
+            {isMobile ? (
+  <h1 className="text-white text-5xl font-semibold tracking-tight">
+  <span className="italic font-semibold tracking-[-0.02em]">
+  Works
+</span>
+</h1>
+
+) : (
   <GooeyText
     texts={["Discover", "My", "Works"]}
     morphTime={1}
     cooldownTime={0.25}
     className="font-bold"
   />
+)}
 </div>
 
             {noise && noise.opacity > 0 && (

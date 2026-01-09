@@ -115,7 +115,7 @@ The interface offers several views: currently streaming, completed, favourites, 
                   rel="noreferrer"
                   className="text-white/70 hover:text-white transition-colors"
                 >
-                  Live website (DOWN)
+                  Live website
                 </a>
                 <a
                   href="https://github.com/LeoV0/AnimeStats"

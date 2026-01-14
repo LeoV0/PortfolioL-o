@@ -18,6 +18,8 @@ const projects: Project[] = [
   { title: "Generative Art", image: "/images/Screenshot_18.png", path: "/projet/generative-art" },
   { title: "Japanese Art", image: "/images/Screenshot_17.png", path: "/projet/japanese-art" },
   { title: "YumeTrack", image: "/images/Screenshot_19.png", path: "/projet/yumetrack" },
+  { title: "Berserk", image: "/images/Screenshot_73.png", path: "/projet/berserk" },
+
 ];
 
 const swipeConfidenceThreshold = 10000;

@@ -94,7 +94,7 @@ export default function HomePage() {
         >
           <FloatingElement
             depth={0.5}
-            className="top-[65%] left-[25%] pointer-events-auto block md:hidden"
+            className="top-[65%] left-[10%] pointer-events-auto block md:hidden"
           >
             <button
               type="button"
@@ -139,6 +139,22 @@ export default function HomePage() {
               />
             </button>
           </FloatingElement>
+
+          <FloatingElement
+      depth={0.9}
+      className="top-[60%] left-[50%] pointer-events-auto block md:hidden"
+    >
+      <button
+        type="button"
+        onClick={() => handleCardClick("/projet/berserk")}
+        className="block focus:outline-none"
+      >
+        <img
+          src="/images/Screenshot_73.png"
+          className="w-38 h-72 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+        />
+      </button>
+    </FloatingElement>
 
           <FloatingElement
             depth={0.5}
@@ -235,6 +251,22 @@ export default function HomePage() {
               />
             </button>
           </FloatingElement>
+
+          <FloatingElement
+  depth={1.1}
+  className="top-[60%] left-[24%] pointer-events-auto hidden md:block"
+>
+  <button
+    type="button"
+    onClick={() => handleCardClick("/projet/berserk")}
+    className="block focus:outline-none"
+  >
+    <img
+      src="/images/Screenshot_73.png"
+      className="w-38 h-72 object-cover shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+    />
+  </button>
+</FloatingElement>
         </Floating>
       )}
 

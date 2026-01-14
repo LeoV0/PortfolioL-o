@@ -139,7 +139,7 @@ The Canvas API is used to animate the main image with distortion effects
             </h2>
             </div>
           <video
-            src="/videos/2025-12-18 15-14-23.mp4"
+            src="/videos/JapaneseArt.mp4"
             className="w-full h-auto object-cover"
             autoPlay
             muted

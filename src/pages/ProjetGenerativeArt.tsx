@@ -141,7 +141,7 @@ I used the Canvas API to create an animated background (moving blue squares,
             </h2>
             </div>
           <video
-            src="/videos/2025-12-18 14-35-57.mp4"
+            src="/videos/GenerativeArt.mp4"
             className="w-full h-auto object-cover"
             autoPlay
             muted

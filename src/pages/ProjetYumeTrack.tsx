@@ -137,7 +137,7 @@ The interface offers several views: currently streaming, completed, favourites, 
             </h2>
             </div>
           <video
-            src="/videos/2025-12-18 15-27-54.mp4"
+            src="/videos/YumeTrack.mp4"
             className="w-full h-auto object-cover"
             autoPlay
             muted
@@ -169,21 +169,21 @@ The interface offers several views: currently streaming, completed, favourites, 
 
         <section className="bg-black">
           <Link
-            to="/projet/generative-art"
+            to="/projet/berserk"
             className="group relative block w-full h-[80vh] md:h-screen overflow-hidden"
           >
             <img
-              src="/images/Screenshot_18.png"
+              src="/images/Screenshot_75.png"
               alt="Generative Art Project"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
             />
             <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-black/40" />
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
               <p className="text-xs md:text-sm uppercase tracking-[0.25em] text-white/70">
-                「 Next — Generative Art 」
+                「 Next — Berserk 1997 」
               </p>
               <p className="text-sm md:text-base text-white/80 max-w-xl">
-              Discover the Generative Art project.
+              Discover the Berserk 1997 project.
               </p>
               <span className="text-xs md:text-sm uppercase tracking-[0.3em] text-white/80 group-hover:text-white transition-colors">
               View the project →

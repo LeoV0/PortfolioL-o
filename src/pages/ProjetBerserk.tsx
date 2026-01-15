@@ -119,7 +119,7 @@ export default function ProjetBerserk() {
     </p>
     <div className="flex flex-row items-center gap-4 text-[0.7rem] tracking-[0.2em] uppercase">
       <a
-        href="https://berserk-leo20.vercel.app/ "
+        href="https://berserk-1997.vercel.app/"
         target="_blank"
         rel="noreferrer"
         className="text-white/70 hover:text-white transition-colors"

@@ -157,6 +157,23 @@
   display: none;             /* Chrome, Safari, Opera */
 }
 
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

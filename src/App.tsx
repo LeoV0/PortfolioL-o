@@ -1,7 +1,13 @@
-import HomePage from "./pages/HomePage";
+import "./index.css";
+import LenisProvider from "./components/LenisProvider";
+import { ScrollToTop } from "./components/ScrollToTop";
+import AnimatedRoutes from "./AnimatedRoutes";
 
-function App() {
-  return <HomePage />;
+export default function App() {
+  return (
+    <LenisProvider>
+      <ScrollToTop />
+      <AnimatedRoutes />
+    </LenisProvider>
+  );
 }
-
-export default App;

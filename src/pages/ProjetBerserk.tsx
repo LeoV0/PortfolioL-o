@@ -1,14 +1,11 @@
 import { motion } from "motion/react";
 import { Link  } from "react-router-dom";
-import { useEffect } from "react";
 import InfiniteGallery from "../components/3d-gallery-photography";
 import { TextScramble } from "../components/ui/text-scramble";
 
 export default function ProjetBerserk() {
 
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
-      }, []);
+   
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
       <main className="flex-1 flex flex-col">

@@ -454,10 +454,10 @@ export default function InfiniteGallery({
   }
 
   return (
-    <div className={className} style={style}>
-      <Canvas camera={{ position: [0, 0, 0], fov: 55 }} gl={{ antialias: true, alpha: true }}>
-        <GalleryScene images={images} fadeSettings={fadeSettings} blurSettings={blurSettings} />
-      </Canvas>
-    </div>
+    <div className={className} style={style} data-lenis-prevent>
+    <Canvas camera={{ position: [0, 0, 0], fov: 55 }} gl={{ antialias: true, alpha: true }}>
+      <GalleryScene images={images} fadeSettings={fadeSettings} blurSettings={blurSettings} />
+    </Canvas>
+  </div>
   );
 }

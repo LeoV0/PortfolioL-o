@@ -40,7 +40,7 @@ export function SimpleTree({
   minimal?: boolean
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const animationRef = useRef<number>()
+  const animationRef = useRef<number>(0)
   const treeRef = useRef<Tree | null>(null)
 
   // Balanced constants for elegant simplicity

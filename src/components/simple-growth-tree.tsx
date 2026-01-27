@@ -46,7 +46,7 @@ export function SimpleTree({
   // Balanced constants for elegant simplicity
   const maxlife = 18 // Moderate life span
 
-  const createVector = (x: number, y: number): Vector2D => ({ x, y })
+  const createVector = (x = 0, y = 0): Vector2D => ({ x, y });
 
   const random = (min?: number, max?: number): number => {
     if (min === undefined) return Math.random()

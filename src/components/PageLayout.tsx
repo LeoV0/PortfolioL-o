@@ -1,5 +1,6 @@
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
+import { type Variants } from "framer-motion";
 
 type PageLayoutProps = {
   title: string;
@@ -18,7 +19,7 @@ export function PageLayout({
   const containerControls = useAnimation();
   const [showContent, setShowContent] = useState(false);
 
-  const titleVariants = {
+  const titleVariants: Variants = {
     hidden: {
       top: "60%",
       left: "50%",

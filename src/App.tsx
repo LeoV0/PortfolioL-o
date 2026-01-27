@@ -48,7 +48,7 @@ export default function App() {
         {!introDone && <IntroScreen />}
       </AnimatePresence>
 
-      {introDone && <AnimatedRoutes introDone={introDone} />}
+      {introDone && <AnimatedRoutes/>}
 
       <AnimatePresence>
         {aboutOpen && (

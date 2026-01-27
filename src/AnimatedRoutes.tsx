@@ -7,11 +7,7 @@ import ProjetJapaneseArt from "./pages/ProjetJapaneseArt";
 import ProjetYumeTrack from "./pages/ProjetYumeTrack";
 import ProjetBerserk from "./pages/ProjetBerserk";
 
-export default function AnimatedRoutes({
-  introDone,
-}: {
-  introDone: boolean;
-}) {
+export default function AnimatedRoutes() {
   const location = useLocation();
 
   return (

@@ -173,6 +173,9 @@ html.lenis {
   overflow: hidden;
 }
 
+html, body {
+  background-color: #f9f5f0;
+}
 
 @layer base {
   * {

@@ -1,93 +1,86 @@
-"use client";
+'use client';
+import { type JSX, useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import type { MotionProps } from 'framer-motion';
 
-import { useState, useCallback, useRef, useEffect } from "react";
-
-const CHARS =
-  "アイウエオカキクケコサシスセソタチツテト" +
-  "あいうえお" +
-  "0123456789";
-
-interface TextScrambleProps {
-  text: string;
+type TextScrambleProps = {
+  children: string;
+  duration?: number;
+  speed?: number;
+  characterSet?: string;
+  as?: React.ElementType;
   className?: string;
-  onClick?: () => void;
-}
+  trigger?: boolean;
+  onScrambleComplete?: () => void;
+} & MotionProps;
 
-export function TextScramble({ text, className = "" }: TextScrambleProps) {
-  const [displayText, setDisplayText] = useState(text);
-  const [, setIsHovering] = useState(false);
-  const [isScrambling, setIsScrambling] = useState(false);
-  const intervalRef = useRef<number | null>(null);
-  const frameRef = useRef(0);
+const defaultChars =
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-  const scramble = useCallback(() => {
-    setIsScrambling(true);
-    frameRef.current = 0;
-    const duration = text.length * 3;
+export function TextScramble({
+  children,
+  duration = 0.8,
+  speed = 0.04,
+  characterSet = defaultChars,
+  className,
+  as: Component = 'p',
+  trigger = true,
+  onScrambleComplete,
+  ...props
+}: TextScrambleProps) {
+  const MotionComponent = motion.create(
+    Component as keyof JSX.IntrinsicElements
+  );
+  const [displayText, setDisplayText] = useState(children);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const text = children;
 
-    if (intervalRef.current) window.clearInterval(intervalRef.current);
+  const scramble = async () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
 
-    intervalRef.current = window.setInterval(() => {
-      frameRef.current++;
+    const steps = duration / speed;
+    let step = 0;
 
-      const progress = frameRef.current / duration;
-      const revealedLength = Math.floor(progress * text.length);
+    const interval = setInterval(() => {
+      let scrambled = '';
+      const progress = step / steps;
 
-      const newText = text
-        .split("")
-        .map((char, i) => {
-          if (char === " ") return " ";
-          if (i < revealedLength) return text[i];
-          return CHARS[Math.floor(Math.random() * CHARS.length)];
-        })
-        .join("");
+      for (let i = 0; i < text.length; i++) {
+        if (text[i] === ' ') {
+          scrambled += ' ';
+          continue;
+        }
 
-      setDisplayText(newText);
-
-      if (frameRef.current >= duration) {
-        if (intervalRef.current) window.clearInterval(intervalRef.current);
-        setDisplayText(text);
-        setIsScrambling(false);
+        if (progress * text.length > i) {
+          scrambled += text[i];
+        } else {
+          scrambled +=
+            characterSet[Math.floor(Math.random() * characterSet.length)];
+        }
       }
-    }, 30);
-  }, [text]);
 
-  const handleMouseEnter = () => {
-    setIsHovering(true);
-    scramble();
-  };
+      setDisplayText(scrambled);
+      step++;
 
-  const handleMouseLeave = () => {
-    setIsHovering(false);
+      if (step > steps) {
+        clearInterval(interval);
+        setDisplayText(text);
+        setIsAnimating(false);
+        onScrambleComplete?.();
+      }
+    }, speed * 1000);
   };
 
   useEffect(() => {
-    return () => {
-      if (intervalRef.current) window.clearInterval(intervalRef.current);
-    };
-  }, []);
+    if (!trigger) return;
+
+    scramble();
+  }, [trigger]);
 
   return (
-    <div
-    className={`group relative inline-flex flex-col cursor-pointer select-none ${className}`}
-    onMouseEnter={handleMouseEnter}
-    onMouseLeave={handleMouseLeave}
-  >
-    <span className="relative inline-block">
-      <span className="relative font-sans text-sm tracking-wider text-white">
-        {displayText.split("").map((char, i) => (
-          <span
-            key={i}
-            className={`inline-block transition-opacity duration-150 ${
-              isScrambling && char !== text[i] ? "opacity-80" : "opacity-100"
-            }`}
-            style={{ transitionDelay: `${i * 10}ms` }}
-          >
-            {char}
-          </span>
-        ))}
-      </span>
-    </span>
-  </div>
+    <MotionComponent className={className} {...props}>
+      {displayText}
+    </MotionComponent>
   );
 }

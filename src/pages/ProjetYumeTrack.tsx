@@ -1,194 +1,185 @@
+import { PageLayout } from "../components/PageLayout";
+import { pageMotion } from "../motion/pageMotion";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
-import { Link } from "react-router-dom";
-import InfiniteGallery from "../components/3d-gallery-photography";
-import { TextScramble } from "../components/ui/text-scramble";
-export default function ProjetYumeTrack() {
-    
+
+
+
+export default function ProjetGenerativeArt() {
+
+  const navigate = useNavigate();
+
+  const goToNextProject = () => {
+    navigate("/projet/japanese-art");
+  };
+  
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col">
-      <main className="flex-1 flex flex-col">
-      <motion.div
-    className="fixed inset-0 bg-black z-9999 pointer-events-none"
-    initial={{ opacity: 1 }}
-    animate={{ opacity: 0 }}
-    transition={{ duration: 0.35, ease: "easeOut" }}
-  />
-        <section className="relative h-screen overflow-hidden">
-          <motion.img
-          key="yumetrack"
-            src="/images/Screenshot_19.png"
-            className="w-full h-full object-cover"
-            initial={{ y: "100%", opacity: 1 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          />
+    <PageLayout title="夢トラック" subtitle="Yume Torakku — YUMETRACK">
 
-          <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-black/40" />
+      <Link
+        to="/"
+        className="fixed top-6 left-6 z-50 text-xl tracking-[0.3em] text-neutral-500 hover:text-neutral-900 transition-colors"
+      >
+        ←
+      </Link>
 
-          <header className="absolute top-6 left-6 right-6 flex items-center justify-between text-xs  tracking-[0.25em] text-white/70 z-10">
-  <Link to="/" className="hover:text-white transition-colors">
-  <TextScramble 
-    text="← Back" 
-  />
-    
-  </Link>
+      <div className="max-w-4xl mx-auto space-y-32 pb-32">
 
-  <TextScramble 
-    text="「 YumeTrack 」" 
-    className="text-white/70 hover:text-white transition-colors"
-  />
-</header>
+        <motion.div
+          className="text-center space-y-6 py-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={pageMotion.heroFade}
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-neutral-900 leading-tight">
+            Track your anime
+            <br />
+            episode by episode
+          </h2>
 
-          <motion.div
-            className="absolute inset-x-0 bottom-0 pb-16 px-8 md:px-16 lg:px-24 flex flex-col gap-3 z-10"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <p className="text-xs md:text-sm uppercase tracking-[0.25em] text-white/70">
-              「 Project — YumeTrack 」
-            </p>
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-light max-w-xl">
-              Application for track your anime.
-            </h1>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-4 border-t border-white/20">
-    <p className=" text-white/80 text-xl md:text-2xl lg:text-3xl font-light max-w-xl mt-1">Made by Léo</p>
-   
+          <p className="text-sm md:text-base text-neutral-600 max-w-xl mx-auto">
+            A modern web application designed to manage anime progress,
+            favourites and discovery in a clean dashboard interface.
+          </p>
+        </motion.div>
 
-  </div>
-          </motion.div>
-        </section>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-8 border-t border-neutral-200 -mt-18">
 
-        <section className="bg-black px-6 md:px-16 lg:px-24 py-16 space-y-10">
-          <div className="max-w-3xl space-y-4 text-sm md:text-base text-white/70 leading-relaxed">
-          <p>
-          YumeTrack is a web application designed to track your progress in
-  anime series episode by episode. Users can create an account, add
-  series to their library and manage their progress in a clear manner, just like on
-  platforms dedicated to anime tracking.
-</p>
-<p>
-The interface offers several views: currently streaming, completed, favourites, as well as
-  a section for discovering new content. The aim of the project was to
-  design a simple and enjoyable experience for organising one's watchlist,
-  while working on authentication, status management and data presentation
-  in a UI inspired by modern dashboards.
-</p>
+          <div className="space-y-3">
+            <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
+              Timeline
+            </span>
+            <p className="text-neutral-700">2 months · Solo project · 2025</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 text-xs md:text-sm text-white/60">
-            <div className="space-y-1">
-            <p className="uppercase tracking-[0.2em] text-[0.7rem] text-white/40">
-  <TextScramble text="Role" />
-</p>
-              <p>Développer, UI design, animation</p>
-            </div>
-            <div className="space-y-1">
-            <p className="uppercase tracking-[0.2em] text-[0.7rem] text-white/40">
-  <TextScramble text="Duration" />
-</p>
-              <p>2 month</p>
-            </div>
-            <div className="space-y-1">
-            <p className="uppercase tracking-[0.2em] text-[0.7rem] text-white/40">
-  <TextScramble text="Year" />
-</p>
-              <p>2025</p>
-            </div>
-            <div className="space-y-1">
-            <p className="uppercase tracking-[0.2em] text-[0.7rem] text-white/40">
-  <TextScramble text="Stack" />
-</p>
-              <p>React TSX, ViteJS, NestJS, NeonDB</p>
-            </div>
+          <div className="space-y-3">
+            <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
+              Highlights
+            </span>
+            <ul className="text-neutral-700 space-y-1">
+              <li>Authentication & user accounts</li>
+              <li>Anime tracking & status management</li>
+              <li>Dashboard-inspired UI</li>
+            </ul>
+          </div>
+
+          <div className="space-y-3">
+            <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
+              Links
+            </span>
             <div className="space-y-2">
-            <p className="uppercase tracking-[0.2em] text-[0.7rem] text-white/40">
-  <TextScramble text="Links" />
-</p>
-              <div className="flex flex-row items-center gap-4 text-[0.7rem] tracking-[0.2em] uppercase">
-                <a
-                  href="https://yumetrack.netlify.app/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-white/70 hover:text-white transition-colors"
-                >
-                  Live website
-                </a>
-                <a
-                  href="https://github.com/LeoV0/AnimeStats"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-white/70 hover:text-white transition-colors"
-                >
-                  GitHub repo
-                </a>
-              </div>
+              <a
+                href="https://yumetrack.netlify.app/"
+                target="_blank"
+                rel="noreferrer"
+                className="block text-neutral-700 hover:text-neutral-900 transition-colors"
+              >
+                Visit website ↗
+              </a>
+              <a
+                href="https://github.com/LeoV0/AnimeStats"
+                target="_blank"
+                rel="noreferrer"
+                className="block text-neutral-700 hover:text-neutral-900 transition-colors"
+              >
+                View code ↗
+              </a>
             </div>
           </div>
-        </section>
+        </div>
 
-        <section className="bg-black">
-        <div className="max-w-5xl mx-auto flex flex-col items-center gap-10">
-            <h2 className="text-sm md:text-base uppercase tracking-[0.25em] text-white/60 text-center pb-12">
-              「 Démo 」
-            </h2>
-            </div>
-          <video
-            src="/videos/YumeTrack.mp4"
-            className="w-full h-auto object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            controls
+        <div className="relative -mx-6 md:-mx-12 lg:-mx-24 h-[70vh]">
+          <img
+            src="/images/YumeTrackHero.png"
+            alt="YumeTrack hero"
+            className="w-full h-full object-cover"
           />
-        </section>
+        </div>
 
-        <section className="bg-black px-6 md:px-16 lg:px-24 py-24">
-  <div className="max-w-5xl mx-auto flex flex-col items-center gap-10">
-    <h2 className="text-sm md:text-base uppercase tracking-[0.25em] text-white/60 text-center">
-      「 Flying posters — generative snapshots 」
-    </h2>
-    <InfiniteGallery
-      className="w-full h-[520px] md:h-[620px] lg:h-[720px]"
-      images={[
-        "/images/Screenshot_34.png",
-        "/images/Screenshot_35.png",
-        "/images/Screenshot_36.png",
-        "/images/Screenshot_47.png",
-        "/images/Screenshot_48.png",
-      ]}
-      visibleCount={8}
-      speed={1}
-    />
-  </div>
-</section>
+        <div className="grid md:grid-cols-2 gap-16">
+          <div className="space-y-4">
+            <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
+              01 — Context
+            </span>
+            <p className="text-neutral-700 leading-loose">
+              YumeTrack is a web application built to track anime series
+              episode by episode. Users can create an account, manage
+              their library and organise content similarly to existing
+              anime tracking platforms.
+            </p>
+          </div>
 
-        <section className="bg-black">
-          <Link
-            to="/projet/berserk"
-            className="group relative block w-full h-[80vh] md:h-screen overflow-hidden"
-          >
+          <div className="space-y-4">
+            <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
+              02 — Approach
+            </span>
+            <p className="text-neutral-700 leading-loose">
+              The project focuses on clarity and usability, with multiple
+              views for ongoing series, completed shows, favourites and
+              discovery. The UI is inspired by modern dashboards while
+              handling authentication, status logic and data presentation.
+            </p>
+          </div>
+        </div>
+
+        <div className="space-y-6">
+          <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
+            03 — Demo
+          </span>
+          <div className="aspect-video bg-neutral-200">
+          <video
+  src="/videos/YumeTrack.mp4"
+  className="w-full h-full object-cover"
+  muted
+  loop
+  playsInline
+  controls
+  preload="none"
+/>
+          </div>
+        </div>
+
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <img
+            src="/images/Screenshot_3.png"
+            alt="Design detail"
+            loading="lazy"
+            className="w-full aspect-[4/5] object-cover"
+          />
+          <div className="space-y-6 flex flex-col justify-center">
             <img
-              src="/images/Screenshot_75.png"
-              alt="Generative Art Project"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              src="/images/Screenshot_114.png"
+              alt="Design detail"
+              loading="lazy"
+              className="w-full aspect-square object-cover"
             />
-            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-black/40" />
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
-              <p className="text-xs md:text-sm uppercase tracking-[0.25em] text-white/70">
-                「 Next — Berserk 1997 」
-              </p>
-              <p className="text-sm md:text-base text-white/80 max-w-xl">
-              Discover the Berserk 1997 project.
-              </p>
-              <span className="text-xs md:text-sm uppercase tracking-[0.3em] text-white/80 group-hover:text-white transition-colors">
-              View the project →
+            <div className="space-y-3">
+              <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
+                Technical Stack
               </span>
+              <p className="text-sm text-neutral-600">
+                React · NestJS · NeonDB
+              </p>
             </div>
-          </Link>
-        </section>
-      </main>
-    </div>
+          </div>
+        </div>
+      
+
+        <blockquote className="border-l-2 border-neutral-300 pl-8 py-4">
+          <p className="text-2xl md:text-3xl font-light text-neutral-800 leading-relaxed italic">
+            “A personal dashboard to keep track of fictional journeys.”
+          </p>
+        </blockquote>
+
+
+        <div
+        className="flex items-center justify-center cursor-pointer text-neutral-700 hover:text-neutral-900 transition-colors mt-16"
+        onClick={goToNextProject}
+      >
+        Next Project →
+      </div>
+      </div>
+    </PageLayout>
   );
 }

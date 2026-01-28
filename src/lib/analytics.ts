@@ -1,30 +1,30 @@
+import type { Gtag } from 'gtag.js';
+
 declare global {
-    interface Window {
-      gtag?: (
-        command: string,
-        targetId: string,
-        config?: Record<string, any>
-      ) => void;
-      dataLayer?: any[];
-    }
+  interface Window {
+    gtag?: Gtag;
+    dataLayer?: unknown[];
   }
-  
-  
-  export const initGA = (measurementId: string) => {
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-    document.head.appendChild(script);
-  
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function gtag() {
-      window.dataLayer?.push(arguments);
-    };
-    window.gtag('js', new Date());
-    window.gtag('config', measurementId, {
-      page_path: window.location.pathname,
-    });
+}
+
+export const initGA = (measurementId: string) => {
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+  document.head.appendChild(script);
+
+  window.dataLayer = window.dataLayer || [];
+
+  window.gtag = function (...args: Parameters<Gtag>) {
+    window.dataLayer?.push(args);
   };
+
+  window.gtag('js', new Date());
+
+  window.gtag('config', measurementId, {
+    page_path: window.location.pathname,
+  });
+};
   
  
   export const trackPageView = (url: string) => {

@@ -173,6 +173,22 @@ export default function ProjetGenerativeArt() {
         </blockquote>
 
 
+
+        <div className="space-y-6">
+          <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
+            04 — In Motion
+          </span>
+          <div className="aspect-video bg-neutral-200">
+            <img
+              src="/images/YumeTrackMotion.png"
+              alt="Project demo"
+              loading="lazy"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+
         <div
         className="flex items-center justify-center cursor-pointer text-neutral-700 hover:text-neutral-900 transition-colors mt-16"
         onClick={goToNextProject}

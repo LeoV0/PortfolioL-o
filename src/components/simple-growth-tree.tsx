@@ -42,6 +42,7 @@ export function SimpleTree({
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animationRef = useRef<number>(0)
   const treeRef = useRef<Tree | null>(null)
+  
 
   // Balanced constants for elegant simplicity
   const maxlife = 18 // Moderate life span

@@ -18,7 +18,7 @@ export function AboutOverlay({ onClose }: { onClose: () => void }) {
 
   return (
     <div
-      className={`fixed inset-0 z-[999] bg-[#f9f7f2] flex items-center justify-center overflow-hidden
+      className={`fixed inset-0 z-[999] bg-[#f9f5f0] flex items-center justify-center overflow-hidden
         transition-opacity duration-500 ${isClosing ? "opacity-0" : "opacity-100"}`}
     >
       <div

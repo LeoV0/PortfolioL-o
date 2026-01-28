@@ -9,14 +9,29 @@ const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
   const lenis = useLenis()
 
   useEffect(() => {
-    const raf = (time: number) => {
-      lenis?.raf(time)
-      requestAnimationFrame(raf)
-    }
-
-    requestAnimationFrame(raf)
-
     return () => lenis?.destroy()
+  }, [lenis])
+
+  useEffect(() => {
+    if (!lenis) return
+  
+    const onVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        lenis.stop()
+      } else {
+        lenis.start()
+        lenis.resize()
+        lenis.scrollTo(lenis.scroll, { immediate: true })
+      }
+    }
+  
+    window.addEventListener("focus", onVisibilityChange)
+    document.addEventListener("visibilitychange", onVisibilityChange)
+  
+    return () => {
+      window.removeEventListener("focus", onVisibilityChange)
+      document.removeEventListener("visibilitychange", onVisibilityChange)
+    }
   }, [lenis])
 
   return (

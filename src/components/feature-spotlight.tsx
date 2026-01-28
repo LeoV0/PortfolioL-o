@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { portfolioEvents } from "../lib/analytics";
 interface SpotlightProps {
   title: string;
   index: string;
@@ -11,20 +11,35 @@ interface SpotlightProps {
 
 export function FeaturedSpotlight({ title, index, img, hoverImg, offsetY = 0 }: SpotlightProps) {
   const [isHovered, setIsHovered] = useState(false);
-
-  const isDesktop = typeof window !== "undefined" && window.innerWidth >= 768;
+  const [isDesktop, setIsDesktop] = useState(false);
 
   const navigate = useNavigate();
 
   const slug = title.toLowerCase().replace(/\s+/g, "-");
 
+  useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+
+    checkDesktop();
+
+    window.addEventListener('resize', checkDesktop);
+
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
+
+  const handleClick = () => {
+    portfolioEvents.viewProject(title);
+    navigate(`/projet/${slug}`);
+  };
 
   return (
     <div
       className="group relative flex cursor-pointer flex-col items-center gap-8 md:flex-row md:items-start md:gap-12 lg:gap-16"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => navigate(`/projet/${slug}`)}
+      onClick={handleClick}
       style={{
         top: isDesktop ? offsetY : 0,
         position: "relative",
@@ -50,6 +65,7 @@ export function FeaturedSpotlight({ title, index, img, hoverImg, offsetY = 0 }: 
           <img
             src={img}
             alt={title}
+            loading="lazy"
             className="absolute inset-0 h-full w-full object-cover transition-all duration-700"
             style={{
               transform: isHovered ? "scale(1.03)" : "scale(1)",
@@ -62,6 +78,7 @@ export function FeaturedSpotlight({ title, index, img, hoverImg, offsetY = 0 }: 
             <img
               src={hoverImg}
               alt={title + " hover"}
+              loading="lazy"
               className="absolute inset-0 h-full w-full object-cover transition-opacity duration-700"
               style={{
                 transform: isHovered ? "scale(1.03)" : "scale(1)",

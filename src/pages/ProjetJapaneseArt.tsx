@@ -2,6 +2,9 @@ import { PageLayout } from "../components/PageLayout";
 import { pageMotion } from "../motion/pageMotion";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
+import { OptimizedImage } from "../components/OptimizedImage";
+import { SEO, seoConfig } from "../components/SEO";
+import { portfolioEvents } from "../lib/analytics";
 
 export default function ProjetJapaneseArt() {
 
@@ -13,6 +16,8 @@ export default function ProjetJapaneseArt() {
 
   return (
     <PageLayout title="日本美術" subtitle="NIHON BIJUTSU — JAPANESE ART">
+<SEO {...seoConfig.japaneseArt} />
+
 
 
       <Link
@@ -70,6 +75,7 @@ export default function ProjetJapaneseArt() {
                 href="https://japanese-art.vercel.app/"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => portfolioEvents.clickExternalLink('Japanese Art Website', 'https://japanese-art.vercel.app/')}
                 className="block text-neutral-700 hover:text-neutral-900 transition-colors"
               >
                 Visit website ↗
@@ -78,6 +84,7 @@ export default function ProjetJapaneseArt() {
                 href="https://github.com/LeoV0/Japanese-Art"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => portfolioEvents.clickExternalLink('Japanese Art Github', 'https://github.com/LeoV0/Japanese-Art')}
                 className="block text-neutral-700 hover:text-neutral-900 transition-colors"
               >
                 View code ↗
@@ -87,11 +94,14 @@ export default function ProjetJapaneseArt() {
         </div>
 
         <div className="relative -mx-6 md:-mx-12 lg:-mx-24 h-[70vh]">
-          <img
-            src="/images/JapaneseHero.png"
-            alt="Japanese Art hero"
-            className="w-full h-full object-cover"
-          />
+          
+          <OptimizedImage
+  src="/images/JapaneseHero.png"
+  webpSrc="/images/JapaneseHero.webp"
+  alt="Japanese Art Hero"
+  className="w-full h-full object-cover"
+  loading="lazy"
+/>
         </div>
 
         <div className="grid md:grid-cols-2 gap-16">
@@ -130,25 +140,29 @@ export default function ProjetJapaneseArt() {
   playsInline
   controls
   preload="none"
+  onPlay={() => portfolioEvents.playVideo('Demo JapaneseArt')}
 />
           </div>
         </div>
 
 
         <div className="grid md:grid-cols-2 gap-6">
-          <img
-            src="/images/Screenshot_112.png"
-            alt="Design detail"
-            loading="lazy"
-            className="w-full aspect-[4/5] object-cover"
-          />
+          <OptimizedImage
+  src="/images/Screenshot_112.png"
+  webpSrc="/images/Screenshot_112.webp"
+  alt="Design detail"
+  className="w-full aspect-[4/5] object-cover"
+  loading="lazy"
+/>
           <div className="space-y-6 flex flex-col justify-center">
-            <img
-              src="/images/Screenshot_111.png"
-              alt="Design detail"
-              loading="lazy"
-              className="w-full aspect-square object-cover"
-            />
+            
+            <OptimizedImage
+  src="/images/Screenshot_111.png"
+  webpSrc="/images/Screenshot_111.webp"
+  alt="Design detail"
+  className="w-full aspect-square object-cover"
+  loading="lazy"
+/>
             <div className="space-y-3">
               <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
                 Technical Stack
@@ -168,7 +182,10 @@ export default function ProjetJapaneseArt() {
         </blockquote>
         <div
         className="flex items-center justify-center cursor-pointer text-neutral-700 hover:text-neutral-900 transition-colors mt-16"
-        onClick={goToNextProject}
+        onClick={() => {
+          portfolioEvents.viewProject('GenerativeArt');
+          goToNextProject();
+        }}
       >
         Next Project →
       </div>

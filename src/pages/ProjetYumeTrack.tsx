@@ -2,6 +2,9 @@ import { PageLayout } from "../components/PageLayout";
 import { pageMotion } from "../motion/pageMotion";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
+import { OptimizedImage } from "../components/OptimizedImage";
+import { SEO, seoConfig } from "../components/SEO";
+import { portfolioEvents } from "../lib/analytics";
 
 
 
@@ -15,6 +18,7 @@ export default function ProjetGenerativeArt() {
   
   return (
     <PageLayout title="夢トラック" subtitle="Yume Torakku — YUMETRACK">
+<SEO {...seoConfig.yumetrack} />
 
       <Link
         to="/"
@@ -72,6 +76,7 @@ export default function ProjetGenerativeArt() {
                 href="https://yumetrack.netlify.app/"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => portfolioEvents.clickExternalLink('YumeTrack Website', 'https://yumetrack.netlify.app/')}
                 className="block text-neutral-700 hover:text-neutral-900 transition-colors"
               >
                 Visit website ↗
@@ -80,6 +85,7 @@ export default function ProjetGenerativeArt() {
                 href="https://github.com/LeoV0/AnimeStats"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => portfolioEvents.clickExternalLink('YumeTrack Github', 'https://github.com/LeoV0/AnimeStats')}
                 className="block text-neutral-700 hover:text-neutral-900 transition-colors"
               >
                 View code ↗
@@ -89,11 +95,14 @@ export default function ProjetGenerativeArt() {
         </div>
 
         <div className="relative -mx-6 md:-mx-12 lg:-mx-24 h-[70vh]">
-          <img
-            src="/images/YumeTrackHero.png"
-            alt="YumeTrack hero"
-            className="w-full h-full object-cover"
-          />
+          
+          <OptimizedImage
+  src="/images/YumeTrackHero.png"
+  webpSrc="/images/YumeTrackHero.webp"
+  alt="YumeTrack hero"
+  className="w-full h-full object-cover"
+  loading="lazy"
+/>
         </div>
 
         <div className="grid md:grid-cols-2 gap-16">
@@ -135,25 +144,32 @@ export default function ProjetGenerativeArt() {
   playsInline
   controls
   preload="none"
+  onPlay={() => portfolioEvents.playVideo('Demo YumeTrack')}
 />
           </div>
         </div>
 
 
         <div className="grid md:grid-cols-2 gap-6">
-          <img
-            src="/images/Screenshot_3.png"
-            alt="Design detail"
-            loading="lazy"
-            className="w-full aspect-[4/5] object-cover"
-          />
+          
+          <OptimizedImage
+  src="/images/Screenshot_3.png"
+  webpSrc="/images/Screenshot_3.webp"
+  alt="Design detail"
+  className="w-full aspect-[4/5] object-cover"
+
+  loading="lazy"
+/>
           <div className="space-y-6 flex flex-col justify-center">
-            <img
-              src="/images/Screenshot_114.png"
-              alt="Design detail"
-              loading="lazy"
-              className="w-full aspect-square object-cover"
-            />
+            
+            <OptimizedImage
+  src="/images/Screenshot_114.png"
+  webpSrc="/images/Screenshot_114.webp"
+  alt="Design detail"
+  className="w-full aspect-square object-cover"
+
+  loading="lazy"
+/>
             <div className="space-y-3">
               <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
                 Technical Stack
@@ -178,20 +194,25 @@ export default function ProjetGenerativeArt() {
           <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
             04 — In Motion
           </span>
-          <div className="aspect-video bg-neutral-200">
-            <img
-              src="/images/YumeTrackMotion.png"
-              alt="Project demo"
-              loading="lazy"
-              className="w-full h-full object-cover"
-            />
+          <div className="grid md:grid-cols-2 gap-6">
+            
+            <OptimizedImage
+  src="/images/YumeTrackMotion.png"
+  webpSrc="/images/YumeTrackMotion.webp"
+  alt="Project motion"
+  className="w-full h-full object-cover"
+  loading="lazy"
+/>
           </div>
         </div>
 
 
         <div
         className="flex items-center justify-center cursor-pointer text-neutral-700 hover:text-neutral-900 transition-colors mt-16"
-        onClick={goToNextProject}
+        onClick={() => {
+          portfolioEvents.viewProject('JapaneseArt');
+          goToNextProject();
+        }}
       >
         Next Project →
       </div>

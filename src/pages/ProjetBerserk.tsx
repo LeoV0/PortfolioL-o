@@ -2,6 +2,9 @@ import { PageLayout } from "../components/PageLayout";
 import { pageMotion } from "../motion/pageMotion";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
+import { OptimizedImage } from "../components/OptimizedImage";
+import { SEO, seoConfig } from "../components/SEO";
+import { portfolioEvents } from "../lib/analytics";
 
 export default function ProjetBerserk() {
 
@@ -13,7 +16,7 @@ export default function ProjetBerserk() {
 
   return (
     <PageLayout title="ベルセルク" subtitle="BERUSERUKU — BERSERK">
-
+<SEO {...seoConfig.berserk} />
       <Link 
         to="/" 
         className="fixed top-6 left-6 z-50 text-xl tracking-[0.3em] text-neutral-500 hover:text-neutral-900 transition-colors"
@@ -66,6 +69,7 @@ export default function ProjetBerserk() {
                 href="https://berserk-1997.vercel.app/" 
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => portfolioEvents.clickExternalLink('Berserk Website', 'https://berserk-1997.vercel.app/')}
                 className="block text-neutral-700 hover:text-neutral-900 transition-colors"
               >
                 Visit website ↗
@@ -74,6 +78,7 @@ export default function ProjetBerserk() {
                 href="https://github.com/LeoV0/Berserk" 
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => portfolioEvents.clickExternalLink('Berserk GitHub', 'https://github.com/LeoV0/Berserk')}
                 className="block text-neutral-700 hover:text-neutral-900 transition-colors"
               >
                 View code ↗
@@ -83,11 +88,13 @@ export default function ProjetBerserk() {
         </div>
 
         <div className="relative -mx-6 md:-mx-12 lg:-mx-24 h-[70vh]">
-          <img
-            src="/images/BerserkHero.png"
-            alt="Dark atmosphere"
-            className="w-full h-full object-cover"
-          />
+         
+          <OptimizedImage
+  src="/images/BerserkHero.png"
+  webpSrc="/images/BerserkHero.webp"
+  alt="Berserk project preview"
+  loading="lazy"
+/>
         </div>
 
         <div className="grid md:grid-cols-2 gap-16">
@@ -127,24 +134,29 @@ export default function ProjetBerserk() {
   playsInline
   controls
   preload="none"
+  onPlay={() => portfolioEvents.playVideo('Demo Berserk')}
 />
           </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          <img
-            src="/images/Behelit.png"
-            alt="Design detail"
-            loading="lazy"
-            className="w-full aspect-[4/5] object-cover"
-          />
+         
+          <OptimizedImage
+  src="/images/Behelit.png"
+  webpSrc="/images/Behelit.webp"
+  alt="Behelit"
+  className="w-full aspect-[4/5] object-cover"
+  loading="lazy"
+/>
           <div className="space-y-6 flex flex-col justify-center">
-            <img
-              src="/images/Griffith.png"
-              alt="Design detail"
-              loading="lazy"
-              className="w-full aspect-square object-cover"
-            />
+            
+            <OptimizedImage
+  src="/images/Griffith.png"
+  webpSrc="/images/Griffith.webp"
+  alt="Griffith"
+  className="w-full aspect-square object-cover"
+  loading="lazy"
+/>
             <div className="space-y-3">
               <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
                 Technical Stack
@@ -167,19 +179,26 @@ export default function ProjetBerserk() {
           <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
             04 — In Motion
           </span>
-          <div className="aspect-video bg-neutral-200">
-            <img
-              src="/images/Brigade.png"
-              alt="Project demo"
-              loading="lazy"
-              className="w-full h-full object-cover"
-            />
+          <div className="grid md:grid-cols-2 gap-6">
+            
+
+<OptimizedImage
+  src="/images/Brigade.png"
+  webpSrc="/images/Brigade.webp"
+  alt="Brigade du Faucon Blanc"
+  className="w-full h-full object-cover"
+
+  loading="lazy"
+/>
           </div>
         </div>
 
  <div
         className="flex items-center justify-center cursor-pointer text-neutral-700 hover:text-neutral-900 transition-colors mt-16"
-        onClick={goToNextProject}
+        onClick={() => {
+          portfolioEvents.viewProject('YumeTrack');
+          goToNextProject();
+        }}
       >
         Next Project →
       </div>

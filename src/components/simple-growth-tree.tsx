@@ -42,7 +42,7 @@ export function SimpleTree({
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animationRef = useRef<number>(0)
   const treeRef = useRef<Tree | null>(null)
-  
+  const resizeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   // Balanced constants for elegant simplicity
   const maxlife = 18 // Moderate life span
@@ -58,7 +58,7 @@ export function SimpleTree({
   const createTree = (width: number, height: number): Tree => {
     // Perfect center positioning
     const x = width / 2
-    const y = height / 2 // Slightly lower for better visual balance
+    const y = height / 2
     const start = createVector(x, y)
 
     const tree: Tree = {
@@ -177,7 +177,6 @@ export function SimpleTree({
 
       // Selective branching - only create branches when meaningful
       if (branch.stw > 0.4 && branch.gen < 5) {
-        // Limit generation depth for simplicity
         const brs = tree.branches
         const pos = createVector(branch.position.x, branch.position.y)
 
@@ -186,7 +185,7 @@ export function SimpleTree({
           brs.push(
             createBranch(
               pos,
-              branch.stw * random(0.5, 0.75), // Better size progression
+              branch.stw * random(0.5, 0.75),
               branch.angle + random(0.6, 1.0) * branch.deviation,
               branch.gen + 0.2,
               branch.index,
@@ -208,7 +207,6 @@ export function SimpleTree({
           )
         }
 
-        // Secondary branches - more selective
         if (branch.gen < 3 && random(1) < branch.proba3 / Math.pow(branch.gen, 1.1)) {
           brs.push(
             createBranch(
@@ -236,7 +234,6 @@ export function SimpleTree({
         }
       }
     } else {
-      // Gentle movement for elegant growth
       branch.speed.x += random(-0.15, 0.15)
     }
   }
@@ -247,7 +244,6 @@ export function SimpleTree({
     const x0 = branch.position.x
     const y0 = branch.position.y
 
-    // Update position with smooth movement
     branch.position.x += -branch.speed.x * Math.cos(branch.angle) + branch.speed.y * Math.sin(branch.angle)
     branch.position.y += branch.speed.x * Math.sin(branch.angle) + branch.speed.y * Math.cos(branch.angle)
 
@@ -264,7 +260,7 @@ export function SimpleTree({
     ctx.lineTo(branch.position.x + dis, 2 * st.y - branch.position.y + dis)
     ctx.stroke()
 
-    // Light accent - subtle
+    // Light accent
     const lightHue = tree.teinte + branch.age + 18 * branch.gen
     const lightColor = hsbToRgb(lightHue, 120 * c, 200 + 12 * branch.gen, (20 * c) / 100)
     ctx.strokeStyle = lightColor
@@ -276,7 +272,7 @@ export function SimpleTree({
     ctx.lineTo(branch.position.x + 0.12 * branch.stw, branch.position.y)
     ctx.stroke()
 
-    // Main branch with elegant colors
+    // Main branch
     const mainHue = tree.teinte + branch.age + 15 * branch.gen
     const mainSat = Math.min(180, 100 * c + 15 * branch.gen)
     const mainBright = Math.min(150, 70 + 12 * branch.gen)
@@ -310,16 +306,13 @@ export function SimpleTree({
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    // Set canvas size
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
 
-    // Clean, elegant background
     const bgColor = hsbToRgb(42, 12, 248)
     ctx.fillStyle = bgColor
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-    // Very subtle vignette
     const gradient = ctx.createRadialGradient(
       canvas.width / 2,
       canvas.height / 2,
@@ -333,7 +326,6 @@ export function SimpleTree({
     ctx.fillStyle = gradient
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-    // Create elegant tree
     treeRef.current = createTree(canvas.width, canvas.height)
   }, [])
 
@@ -344,7 +336,6 @@ export function SimpleTree({
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    // Tree grows once per frame
     const tree = treeRef.current
     let hasAliveBranches = false
 
@@ -356,11 +347,12 @@ export function SimpleTree({
       }
     })
 
-    // Continue animation with elegant frame rate
+    const targetFPS = window.innerWidth < 768 ? 30 : 60
+    
     if (hasAliveBranches) {
       setTimeout(() => {
         animationRef.current = requestAnimationFrame(draw)
-      }, 1000 / 60) // Smooth 90fps
+      }, 1000 / targetFPS)
     }
   }, [])
 
@@ -377,11 +369,17 @@ export function SimpleTree({
     draw()
 
     const handleResize = () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current)
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current)
       }
-      setup()
-      draw()
+
+      resizeTimeoutRef.current = setTimeout(() => {
+        if (animationRef.current) {
+          cancelAnimationFrame(animationRef.current)
+        }
+        setup()
+        draw()
+      }, 250)
     }
 
     window.addEventListener("resize", handleResize)
@@ -391,16 +389,19 @@ export function SimpleTree({
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
       }
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current)
+      }
     }
   }, [setup, draw])
 
   return (
     <div className="w-full h-screen overflow-hidden">
       <canvas
-  ref={canvasRef}
-  className="absolute inset-0"
-  onClick={!minimal ? handleClick : undefined}
-/>
+        ref={canvasRef}
+        className="absolute inset-0"
+        onClick={!minimal ? handleClick : undefined}
+      />
     </div>
   )
 }

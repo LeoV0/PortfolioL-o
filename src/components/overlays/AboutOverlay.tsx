@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { SimpleTree } from "../simple-growth-tree"
+import { portfolioEvents } from "../../lib/analytics"
 
 export function AboutOverlay({ onClose }: { onClose: () => void }) {
   const [showText, setShowText] = useState(false)
@@ -8,13 +9,18 @@ export function AboutOverlay({ onClose }: { onClose: () => void }) {
   const handleClose = () => {
     setIsClosing(true)
     setShowText(false)
+    portfolioEvents.closeAboutOverlay();
     setTimeout(onClose, 500) 
   }
 
   useEffect(() => {
     const t = setTimeout(() => setShowText(true), 1000)
     return () => clearTimeout(t)
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    if (!isClosing) portfolioEvents.openAboutOverlay();
+  }, [isClosing]);
 
   return (
     <div

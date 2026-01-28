@@ -1,5 +1,6 @@
 import { FeaturedSpotlight } from "../components/feature-spotlight";
 import { PageLayout } from "../components/PageLayout";
+import { SEO, seoConfig } from "../components/SEO";
 
 const spotlights = [
   {
@@ -36,6 +37,7 @@ export default function HomePage() {
 
   return (
     <PageLayout title="ホーム" subtitle="HŌMU — HOME" isHome={true}>
+      <SEO {...seoConfig.home} />
 
       <div className="flex flex-col md:flex-row justify-center flex-wrap gap-16 -mt-24 md:mt-0">
         {spotlights.map((spot, idx) => (

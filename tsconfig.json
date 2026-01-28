@@ -6,6 +6,7 @@
   ],
   "compilerOptions": {
     "baseUrl": ".",
+    "types": ["node", "vite/client", "react/experimental"],
     "skipLibCheck": true,
     "paths": {
       "@/*": ["./src/*"]

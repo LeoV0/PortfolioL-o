@@ -179,7 +179,7 @@ export default function ProjetBerserk() {
           <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
             04 — In Motion
           </span>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="aspect-video bg-neutral-200">
             
 
 <OptimizedImage

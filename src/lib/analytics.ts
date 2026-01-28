@@ -1,8 +1,6 @@
-import type { Gtag } from 'gtag.js';
-
 declare global {
   interface Window {
-    gtag?: Gtag;
+    gtag?: Gtag.Gtag;
     dataLayer?: unknown[];
   }
 }
@@ -15,9 +13,9 @@ export const initGA = (measurementId: string) => {
 
   window.dataLayer = window.dataLayer || [];
 
-  window.gtag = function (...args: Parameters<Gtag>) {
+  window.gtag = function (...args) {
     window.dataLayer?.push(args);
-  };
+  } as Gtag.Gtag;
 
   window.gtag('js', new Date());
 

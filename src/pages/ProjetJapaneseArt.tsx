@@ -23,6 +23,7 @@ export default function ProjetJapaneseArt() {
       <Link
         to="/"
         className="fixed top-6 left-6 z-50 text-xl tracking-[0.3em] text-neutral-500 hover:text-neutral-900 transition-colors"
+        aria-label="Retour à l'accueil"
       >
         ←
       </Link>
@@ -49,14 +50,14 @@ export default function ProjetJapaneseArt() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-8 border-t border-neutral-200 -mt-18">
 
           <div className="space-y-3">
-            <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
+            <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-600">
               Timeline
             </span>
             <p className="text-neutral-700">1 month · Solo project · 2025</p>
           </div>
 
           <div className="space-y-3">
-            <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
+            <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-600">
               Highlights
             </span>
             <ul className="text-neutral-700 space-y-1">
@@ -67,7 +68,7 @@ export default function ProjetJapaneseArt() {
           </div>
 
           <div className="space-y-3">
-            <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
+            <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-600">
               Links
             </span>
             <div className="space-y-2">
@@ -93,20 +94,21 @@ export default function ProjetJapaneseArt() {
           </div>
         </div>
 
-        <div className="relative -mx-6 md:-mx-12 lg:-mx-24 h-[70vh]">
+        <div className="relative -mx-6 md:-mx-12 lg:-mx-24">
           
           <OptimizedImage
   src="/images/JapaneseHero.png"
   webpSrc="/images/JapaneseHero.webp"
   alt="Japanese Art Hero"
-  className="w-full h-full object-cover"
-  loading="lazy"
+  aspectRatio="16/9"
+  loading="eager"
+  className="h-[70vh] w-full"
 />
         </div>
 
         <div className="grid md:grid-cols-2 gap-16">
           <div className="space-y-4">
-            <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
+            <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-600">
               01 — Context
             </span>
             <p className="text-neutral-700 leading-loose">
@@ -117,7 +119,7 @@ export default function ProjetJapaneseArt() {
           </div>
 
           <div className="space-y-4">
-            <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
+            <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-600">
               02 — Approach
             </span>
             <p className="text-neutral-700 leading-loose">
@@ -128,7 +130,7 @@ export default function ProjetJapaneseArt() {
         </div>
 
         <div className="space-y-6">
-          <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
+          <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-600">
             03 — Demo
           </span>
           <div className="aspect-video bg-neutral-200">
@@ -151,7 +153,7 @@ export default function ProjetJapaneseArt() {
   src="/images/Screenshot_112.png"
   webpSrc="/images/Screenshot_112.webp"
   alt="Design detail"
-  className="w-full aspect-[4/5] object-cover"
+  aspectRatio="4/5"
   loading="lazy"
 />
           <div className="space-y-6 flex flex-col justify-center">
@@ -160,11 +162,11 @@ export default function ProjetJapaneseArt() {
   src="/images/Screenshot_111.png"
   webpSrc="/images/Screenshot_111.webp"
   alt="Design detail"
-  className="w-full aspect-square object-cover"
+  aspectRatio="1/1"
   loading="lazy"
 />
             <div className="space-y-3">
-              <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-400">
+              <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-600">
                 Technical Stack
               </span>
               <p className="text-sm text-neutral-600">

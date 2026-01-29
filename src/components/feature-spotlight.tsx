@@ -16,6 +16,8 @@ export function FeaturedSpotlight({ title, index, img, hoverImg, offsetY = 0 }: 
   const navigate = useNavigate();
 
   const slug = title.toLowerCase().replace(/\s+/g, "-");
+  const showText = isHovered || !isDesktop;
+
 
   useEffect(() => {
     const checkDesktop = () => {
@@ -111,13 +113,23 @@ export function FeaturedSpotlight({ title, index, img, hoverImg, offsetY = 0 }: 
         </div>
 
         <div
-          className="absolute -bottom-6 right-0 flex items-center gap-2 font-mono text-xs text-muted-foreground transition-all duration-700 md:-bottom-8 md:text-sm"
-          style={{
-            opacity: isHovered ? 1 : 0.4,
-            transform: isHovered ? "translateY(12px)" : "translateY(0)",
-            transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
-          }}
-        >
+  className="
+    absolute 
+    top-3 left-3 
+    md:-bottom-8 md:left-auto md:right-0 md:top-auto
+    md:translate-y-2
+    flex items-center gap-2 
+    font-mono text-xs md:text-sm
+    text-neutral-600 md:text-muted-foreground
+    transition-all duration-700
+    pointer-events-none
+  "
+  style={{
+    opacity: showText ? 1 : 0.5,
+    transform: showText ? "translateY(0)" : "translateY(4px)",
+    transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+  }}
+>
           <span>{title}</span>
           <span>{index}</span>
         </div>

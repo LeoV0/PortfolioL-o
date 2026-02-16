@@ -1,24 +1,21 @@
-import { PageLayout } from "../components/PageLayout";
-import { pageMotion } from "../motion/pageMotion";
-import { Link, useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
+import { Link, useNavigate } from "react-router-dom";
 import { OptimizedImage } from "../components/OptimizedImage";
+import { PageLayout } from "../components/PageLayout";
 import { SEO, seoConfig } from "../components/SEO";
 import { portfolioEvents } from "../lib/analytics";
-
-
+import { pageMotion } from "../motion/pageMotion";
 
 export default function ProjetGenerativeArt() {
-
   const navigate = useNavigate();
 
   const goToNextProject = () => {
     navigate("/projet/japanese-art");
   };
-  
+
   return (
     <PageLayout title="夢トラック" subtitle="Yume Torakku — YUMETRACK">
-<SEO {...seoConfig.yumetrack} />
+      <SEO {...seoConfig.yumetrack} />
 
       <Link
         to="/"
@@ -29,7 +26,6 @@ export default function ProjetGenerativeArt() {
       </Link>
 
       <div className="max-w-4xl mx-auto space-y-32 pb-32">
-
         <motion.div
           className="text-center space-y-6 py-16"
           initial={{ opacity: 0, y: 20 }}
@@ -49,7 +45,6 @@ export default function ProjetGenerativeArt() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-8 border-t border-neutral-200 -mt-18">
-
           <div className="space-y-3">
             <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-600">
               Timeline
@@ -77,7 +72,12 @@ export default function ProjetGenerativeArt() {
                 href="https://yumetrack.netlify.app/"
                 target="_blank"
                 rel="noreferrer"
-                onClick={() => portfolioEvents.clickExternalLink('YumeTrack Website', 'https://yumetrack.netlify.app/')}
+                onClick={() =>
+                  portfolioEvents.clickExternalLink(
+                    "YumeTrack Website",
+                    "https://yumetrack.netlify.app/",
+                  )
+                }
                 className="block text-neutral-700 hover:text-neutral-900 transition-colors"
               >
                 Visit website ↗
@@ -86,7 +86,12 @@ export default function ProjetGenerativeArt() {
                 href="https://github.com/LeoV0/AnimeStats"
                 target="_blank"
                 rel="noreferrer"
-                onClick={() => portfolioEvents.clickExternalLink('YumeTrack Github', 'https://github.com/LeoV0/AnimeStats')}
+                onClick={() =>
+                  portfolioEvents.clickExternalLink(
+                    "YumeTrack Github",
+                    "https://github.com/LeoV0/AnimeStats",
+                  )
+                }
                 className="block text-neutral-700 hover:text-neutral-900 transition-colors"
               >
                 View code ↗
@@ -96,15 +101,14 @@ export default function ProjetGenerativeArt() {
         </div>
 
         <div className="relative -mx-6 md:-mx-12 lg:-mx-24">
-          
           <OptimizedImage
-  src="/images/YumeTrackHero.png"
-  webpSrc="/images/YumeTrackHero.webp"
-  alt="YumeTrack hero"
-  aspectRatio="16/9"
-  loading="eager"
-  className="h-[70vh] w-full"
-/>
+            src="/images/YumeTrackHero.png"
+            webpSrc="/images/YumeTrackHero.webp"
+            alt="YumeTrack hero"
+            aspectRatio="16/9"
+            loading="eager"
+            className="h-[70vh] w-full"
+          />
         </div>
 
         <div className="grid md:grid-cols-2 gap-16">
@@ -113,10 +117,9 @@ export default function ProjetGenerativeArt() {
               01 — Context
             </span>
             <p className="text-neutral-700 leading-loose">
-              YumeTrack is a web application built to track anime series
-              episode by episode. Users can create an account, manage
-              their library and organise content similarly to existing
-              anime tracking platforms.
+              YumeTrack is a web application built to track anime series episode
+              by episode. Users can create an account, manage their library and
+              organise content similarly to existing anime tracking platforms.
             </p>
           </div>
 
@@ -125,10 +128,10 @@ export default function ProjetGenerativeArt() {
               02 — Approach
             </span>
             <p className="text-neutral-700 leading-loose">
-              The project focuses on clarity and usability, with multiple
-              views for ongoing series, completed shows, favourites and
-              discovery. The UI is inspired by modern dashboards while
-              handling authentication, status logic and data presentation.
+              The project focuses on clarity and usability, with multiple views
+              for ongoing series, completed shows, favourites and discovery. The
+              UI is inspired by modern dashboards while handling authentication,
+              status logic and data presentation.
             </p>
           </div>
         </div>
@@ -138,38 +141,35 @@ export default function ProjetGenerativeArt() {
             03 — Demo
           </span>
           <div className="aspect-video bg-neutral-200">
-          <video
-  src="/videos/YumeTrack.mp4"
-  className="w-full h-full object-cover"
-  muted
-  loop
-  playsInline
-  controls
-  preload="none"
-  onPlay={() => portfolioEvents.playVideo('Demo YumeTrack')}
-/>
+            <video
+              src="/videos/YumeTrack.mp4"
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              onPlay={() => portfolioEvents.playVideo("Demo YumeTrack")}
+            />
           </div>
         </div>
 
-
         <div className="grid md:grid-cols-2 gap-6">
-          
           <OptimizedImage
-  src="/images/Screenshot_3.png"
-  webpSrc="/images/Screenshot_3.webp"
-  alt="Design detail"
-  aspectRatio="4/5"
-  loading="lazy"
-/>
+            src="/images/Screenshot_3.png"
+            webpSrc="/images/Screenshot_3.webp"
+            alt="Design detail"
+            aspectRatio="4/5"
+            loading="lazy"
+          />
           <div className="space-y-6 flex flex-col justify-center">
-            
             <OptimizedImage
-  src="/images/Screenshot_114.png"
-  webpSrc="/images/Screenshot_114.webp"
-  alt="Design detail"
-  aspectRatio="1/1"
-  loading="lazy"
-/>
+              src="/images/Screenshot_114.png"
+              webpSrc="/images/Screenshot_114.webp"
+              alt="Design detail"
+              aspectRatio="1/1"
+              loading="lazy"
+            />
             <div className="space-y-3">
               <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-600">
                 Technical Stack
@@ -180,7 +180,6 @@ export default function ProjetGenerativeArt() {
             </div>
           </div>
         </div>
-      
 
         <blockquote className="border-l-2 border-neutral-300 pl-8 py-4">
           <p className="text-2xl md:text-3xl font-light text-neutral-800 leading-relaxed italic">
@@ -188,34 +187,30 @@ export default function ProjetGenerativeArt() {
           </p>
         </blockquote>
 
-
-
         <div className="space-y-6">
           <span className="text-[0.65rem] uppercase tracking-[0.4em] text-neutral-600">
             04 — In Motion
           </span>
           <div className="aspect-video bg-neutral-200">
-            
             <OptimizedImage
-  src="/images/YumeTrackMotion.png"
-  webpSrc="/images/YumeTrackMotion.webp"
-  alt="Project motion"
-  aspectRatio="16/9"
-  loading="lazy"
-/>
+              src="/images/YumeTrackMotion.png"
+              webpSrc="/images/YumeTrackMotion.webp"
+              alt="Project motion"
+              aspectRatio="16/9"
+              loading="lazy"
+            />
           </div>
         </div>
 
-
         <div
-        className="flex items-center justify-center cursor-pointer text-neutral-700 hover:text-neutral-900 transition-colors mt-16"
-        onClick={() => {
-          portfolioEvents.viewProject('JapaneseArt');
-          goToNextProject();
-        }}
-      >
-        Next Project →
-      </div>
+          className="flex items-center justify-center cursor-pointer text-neutral-700 hover:text-neutral-900 transition-colors mt-16"
+          onClick={() => {
+            portfolioEvents.viewProject("JapaneseArt");
+            goToNextProject();
+          }}
+        >
+          Next Project →
+        </div>
       </div>
     </PageLayout>
   );

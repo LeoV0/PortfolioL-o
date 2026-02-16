@@ -149,12 +149,12 @@
 }
 
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE, Edge */
-  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .no-scrollbar::-webkit-scrollbar {
-  display: none;             /* Chrome, Safari, Opera */
+  display: none; /* Chrome, Safari, Opera */
 }
 
 html.lenis {
@@ -173,8 +173,10 @@ html.lenis {
   overflow: hidden;
 }
 
-html, body {
+html,
+body {
   background-color: #f9f5f0;
+  overflow: hidden;
 }
 
 @layer base {

@@ -19,10 +19,10 @@ export default function ProjetJapaneseArt() {
 
       <Link
         to="/"
-        className="fixed top-6 left-6 z-50 text-xl tracking-[0.3em] text-neutral-500 hover:text-neutral-900 transition-colors"
+        className="fixed top-6 left-6 z-50 flex gap-8 text-xs tracking-[0.25em] text-black"
         aria-label="Retour à l'accueil"
       >
-        ←
+        Back
       </Link>
 
       <div className="max-w-4xl mx-auto space-y-32 pb-32">

@@ -1,21 +1,21 @@
-import { useEffect, useState } from "react"
-import { SimpleTree } from "../simple-growth-tree"
-import { portfolioEvents } from "../../lib/analytics"
+import { useEffect, useState } from "react";
+import { portfolioEvents } from "../../lib/analytics";
+import { SimpleTree } from "../simple-growth-tree";
 
 export function AboutOverlay({ onClose }: { onClose: () => void }) {
-  const [showText, setShowText] = useState(false)
-  const [isClosing, setIsClosing] = useState(false)
+  const [showText, setShowText] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
   const handleClose = () => {
-    setIsClosing(true)
-    setShowText(false)
+    setIsClosing(true);
+    setShowText(false);
     portfolioEvents.closeAboutOverlay();
-    setTimeout(onClose, 500) 
-  }
+    setTimeout(onClose, 500);
+  };
 
   useEffect(() => {
-    const t = setTimeout(() => setShowText(true), 1000)
-    return () => clearTimeout(t)
+    const t = setTimeout(() => setShowText(true), 1000);
+    return () => clearTimeout(t);
   }, []);
 
   useEffect(() => {
@@ -49,13 +49,15 @@ export function AboutOverlay({ onClose }: { onClose: () => void }) {
             </p>
 
             <p className="text-sm leading-loose text-neutral-700 mb-6">
-              Passionate about React, creative web experiences and visual universes inspired by
-              Japanese art, I design interfaces where animation and typography play a central role.
+              Passionate about React, creative web experiences and visual
+              universes inspired by Japanese art, I design interfaces where
+              animation and typography play a central role.
             </p>
 
             <p className="text-sm leading-loose text-neutral-700 mb-12">
-              I enjoy exploring the Canvas API, shaders, and micro-interactions to create immersive
-              projects, while keeping the code clean, structured, and easy to maintain.
+              I enjoy exploring the Canvas API, shaders, and micro-interactions
+              to create immersive projects, while keeping the code clean,
+              structured, and easy to maintain.
             </p>
 
             <div className="space-y-2 text-xs tracking-[0.3em] uppercase text-neutral-600 mb-12">
@@ -83,22 +85,15 @@ export function AboutOverlay({ onClose }: { onClose: () => void }) {
         </div>
       </div>
 
-      <button
-        onClick={handleClose}
-        className="
-          absolute top-6 right-6
-          w-8 h-8
-          flex items-center justify-center
-          text-black/60
-          hover:text-black
-          transition
-          cursor-pointer
-        "
-        aria-label="Close"
-      >
-        <span className="block w-4 h-px bg-current rotate-45 absolute" />
-        <span className="block w-4 h-px bg-current -rotate-45 absolute" />
-      </button>
+      <div className="fixed top-6 right-6 z-50 flex gap-8 text-xs uppercase tracking-[0.25em] text-black">
+        <button
+          onClick={handleClose}
+          className="hover:text-neutral-900 transition-colors cursor-pointer"
+          aria-label="Close"
+        >
+          Close
+        </button>
+      </div>
     </div>
-  )
+  );
 }

@@ -17,7 +17,7 @@ export function PageLayout({
   const titleControls = useAnimation();
   const containerControls = useAnimation();
   const [showContent, setShowContent] = useState(false);
-  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
+  const [_isMobileOrTablet, setIsMobileOrTablet] = useState(false);
 
   const titleVariants: Variants = {
     hidden: {

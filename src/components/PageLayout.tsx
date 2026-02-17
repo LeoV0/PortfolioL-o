@@ -1,6 +1,5 @@
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, type Variants } from "framer-motion";
 import { useEffect, useState } from "react";
-import { type Variants } from "framer-motion";
 
 type PageLayoutProps = {
   title: string;
@@ -18,6 +17,7 @@ export function PageLayout({
   const titleControls = useAnimation();
   const containerControls = useAnimation();
   const [showContent, setShowContent] = useState(false);
+  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
 
   const titleVariants: Variants = {
     hidden: {
@@ -71,6 +71,17 @@ export function PageLayout({
 
     runAnimation();
   }, [isHome, titleControls, containerControls]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 1023px)");
+
+    const handleChange = () => setIsMobileOrTablet(mediaQuery.matches);
+
+    handleChange();
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
 
   return (
     <motion.div

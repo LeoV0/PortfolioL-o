@@ -34,9 +34,6 @@ const spotlights = [
 ];
 
 export default function HomePage() {
-
-  
-
   return (
     <PageLayout title="ホーム" subtitle="HŌMU — HOME" isHome={true}>
       <SEO {...seoConfig.home} />

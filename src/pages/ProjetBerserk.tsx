@@ -16,6 +16,7 @@ export default function ProjetBerserk() {
   return (
     <PageLayout title="ベルセルク" subtitle="BERUSERUKU — BERSERK">
       <SEO {...seoConfig.berserk} />
+
       <Link
         to="/"
         className="fixed top-6 left-6 z-50 flex gap-8 text-xs tracking-[0.25em] text-black"

@@ -99,7 +99,7 @@ export default function ProjetBerserk() {
           </div>
         </div>
 
-        <div className="relative -mx-6 md:-mx-12 lg:-mx-24">
+        <div className="relative  -mx-6 md:-mx-12 lg:-mx-24">
           <OptimizedImage
             src="/images/BerserkHero.png"
             webpSrc="/images/BerserkHero.webp"

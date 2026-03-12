@@ -50,7 +50,6 @@ export function PageLayout({
   useEffect(() => {
     const runAnimation = async () => {
       if (isHome) {
-        document.body.style.overflow = "hidden";
         await containerControls.start({
           y: "0%",
           transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },

@@ -176,7 +176,7 @@ html.lenis {
 html,
 body {
   background-color: #f9f5f0;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 body {
